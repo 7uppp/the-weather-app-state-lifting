@@ -1,15 +1,13 @@
-import Tempature from '../../../../../../Tempature/Tempature'
-import WeatherIcon from '../../../../../../WeatherIcon/WeatherIcon'
-import WeatherDesc from '../../../../currentCity/components/WeatherDesc/WeatherDesc'
-import Date from '../../../../../../Date/Date'
+import WeeklyDayCard from './WeeklyDayCard/WeeklyDayCard'
 
-const WeeklyCard = ({ weeklyDate, weeklyIcon, weeklyTemp, weeklyText }) => {
+const WeeklyCard = ({ weeklyData }) => {
+  console.log(weeklyData)
   return (
-    <div className="flex items-center gap-4 whitespace-nowrap">
-      <Date date={weeklyDate}></Date>
-      <WeatherIcon weatherIcon={weeklyIcon} />
-      <WeatherDesc desc={weeklyText} />
-      <Tempature temp={weeklyTemp} />
+    <div className="flex flex-col">
+      {weeklyData.map((dayData, index) => {
+        // console.log(dayData)
+        return <WeeklyDayCard key={index} dayData={dayData} />
+      })}
     </div>
   )
 }

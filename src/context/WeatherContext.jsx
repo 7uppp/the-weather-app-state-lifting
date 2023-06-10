@@ -15,10 +15,7 @@ export const WeatherProvider = ({ children }) => {
     desc: '',
     humidity: '',
     wind_kph: '',
-    weeklyDate: '',
-    weeklyTemp: '',
-    weeklyText: '',
-    weeklyIcon: '',
+    weeklyData: [],
   })
 
   const setProperty = useCallback((property, value) => {
@@ -45,7 +42,7 @@ export const WeatherProvider = ({ children }) => {
           wind_kph,
         },
       } = response.data
-      console.log(response.data)
+      // console.log(response.data)
       const dataToArrary = {
         cityName,
         temp,
@@ -77,17 +74,9 @@ export const WeatherProvider = ({ children }) => {
       const {
         forecast: { forecastday },
       } = response.data
-      console.log(forecastday)
+      // console.log(forecastday)
 
-      forecastday.slice(0, 7).map((forecast, index) => {
-        const {
-          date: WeeklyDate,
-          day: {
-            avgtemp_c: weeklyTemp,
-            condition: { text: weeklyText, icon: weeklyIcon },
-          },
-        } = forecast
-      })
+      setProperty('weeklyData', forecastday)
     } catch (error) {
       console.log(error)
       setProperty('error', error)

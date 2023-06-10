@@ -4,18 +4,12 @@ import Title from '../../../../Title/Title'
 import WeeklyCard from './components/WeeklyCard/WeeklyCard'
 
 const WeeklyForecast = () => {
-  const { weeklyDate, weeklyTemp, weeklyText, weeklyIcon } =
-    useContext(WeatherContext)
-  console.log(weeklyDate)
+  const { weeklyData } = useContext(WeatherContext)
+  // console.log(weeklyData)
   return (
-    <div>
+    <div className="flex flex-col">
       <Title title={'7-DAY-FORECAST'} className={'mt-8'} />
-      <WeeklyCard
-        weeklyDate={weeklyDate}
-        weeklyIcon={weeklyIcon}
-        weeklyTemp={weeklyTemp}
-        weeklyText={weeklyText}
-      />
+      <WeeklyCard weeklyData={weeklyData} />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 const Date = ({ date }) => {
-  return <div>{date}</div>
+  return <div className="text-white">{date}</div>
 }
 
 export default Date
