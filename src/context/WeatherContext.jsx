@@ -86,7 +86,7 @@ export const WeatherProvider = ({ children }) => {
     }
   }
 
-  const getOtherCitiesWeather = async (city) => {
+  const getOtherCitiesWeather = async () => {
     const cities = ['Sydney', 'Adelaide', 'Melbourne', 'Perth']
     setProperty('loading', true)
     try {
