@@ -8,10 +8,8 @@ const Icon = () => {
 
   const handleClick = () => {
     setProperty('clicked', 'Search')
-    setTimeout(() => {
-      getTodayWeather(city)
-      getWeeklyWeather(city)
-    }, 1500)
+    getTodayWeather(city)
+    getWeeklyWeather(city)
     setProperty('city', '')
   }
 
