@@ -4,7 +4,7 @@ import WeatherDesc from '../../../../../../components/CurrentCity/components/Wea
 import Tempature from '../../../../../../../../components/Tempature'
 
 const WeeklyDayCard = ({ dayData }) => {
-  console.log(dayData)
+  // console.log(dayData)
   const { date, day } = dayData || {}
   const { condition, avgtemp_c } = day || {}
 

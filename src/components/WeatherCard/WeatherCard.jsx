@@ -15,7 +15,7 @@ const WeatherCard = () => {
     <div className="w-full max-w-7xl overflow-hidden">
       <SearchBar />
       <BackgroundImage img={bg} className="rounded-lg border-4 border-white">
-        <div className="flex justify-around ">
+        <div className="flex xl:flex-row flex-col justify-around  ">
           <CurrentCity
             cityName={cityName}
             temp={temp}

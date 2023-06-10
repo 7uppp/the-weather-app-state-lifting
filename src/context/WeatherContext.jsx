@@ -1,4 +1,4 @@
-import { createContext, useState, useCallback } from 'react'
+import { createContext, useState, useCallback, useEffect } from 'react'
 import axios from 'axios'
 
 export const WeatherContext = createContext()
@@ -6,7 +6,7 @@ export const WeatherContext = createContext()
 export const WeatherProvider = ({ children }) => {
   const [state, setState] = useState({
     clicked: '',
-    city: '',
+    city: 'Brisbane',
     loading: false,
     error: false,
     cityName: '',
@@ -16,6 +16,7 @@ export const WeatherProvider = ({ children }) => {
     humidity: '',
     wind_kph: '',
     weeklyData: [],
+    otherCitiesData: [],
   })
 
   const setProperty = useCallback((property, value) => {
@@ -26,7 +27,7 @@ export const WeatherProvider = ({ children }) => {
     baseURL: 'https://api.weatherapi.com/v1/',
   })
 
-  const getTodayWeather = async (city) => {
+  const getTodayWeather = async (city = state.city) => {
     setProperty('loading', true)
     try {
       const response = await makeRequest.get(
@@ -64,7 +65,7 @@ export const WeatherProvider = ({ children }) => {
     }
   }
 
-  const getWeeklyWeather = async (city) => {
+  const getWeeklyWeather = async (city = state.city) => {
     setProperty('loading', true)
     try {
       const response = await makeRequest.get(
@@ -85,9 +86,62 @@ export const WeatherProvider = ({ children }) => {
     }
   }
 
+  const getOtherCitiesWeather = async (city) => {
+    const cities = ['Sydney', 'Adelaide', 'Melbourne', 'Perth']
+    setProperty('loading', true)
+    try {
+      const response = await Promise.all(
+        cities.map((city) =>
+          makeRequest.get(
+            `current.json?q=${city}&key=${import.meta.env.VITE_API_KEY}`
+          )
+        )
+      )
+      // console.log(response)
+      const otherCities = response.map((city) => {
+        const {
+          location: { name: cityName },
+          current: {
+            temp_c: temp,
+            condition: { icon: weatherIcon },
+          },
+        } = city.data
+        return {
+          cityName,
+          temp,
+          weatherIcon,
+        }
+      })
+      // console.log(otherCities)
+      setProperty('loading', false)
+      setProperty('otherCitiesData', otherCities)
+      // console.log(otherCities)
+    } catch (error) {
+      console.log(error)
+      setProperty('error', error)
+    } finally {
+      setProperty('loading', false)
+    }
+  }
+
+  useEffect(() => {
+    getTodayWeather()
+    getWeeklyWeather()
+  }, [state['city']])
+
+  useEffect(() => {
+    getOtherCitiesWeather()
+  }, [])
+
   return (
     <WeatherContext.Provider
-      value={{ ...state, setProperty, getTodayWeather, getWeeklyWeather }}>
+      value={{
+        ...state,
+        setProperty,
+        getTodayWeather,
+        getWeeklyWeather,
+        getOtherCitiesWeather,
+      }}>
       {children}
     </WeatherContext.Provider>
   )

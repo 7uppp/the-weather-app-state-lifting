@@ -2,12 +2,14 @@ import Name from '../../../../../../components/name/Name'
 import Tempature from '../../../../../Tempature/Tempature'
 import WeatherIcon from '../../../../../WeatherIcon/WeatherIcon'
 
-const City = ({ name, weatherIcon }) => {
+const City = ({ cityData }) => {
+  // console.log(cityData)
+  const { cityName, temp, weatherIcon } = cityData || {}
   return (
     <div className="flex gap-2 items-center">
-      <Name className="text-white font-normal ">{name}</Name>
+      <Name className="text-white font-normal ">{cityName}</Name>
       <WeatherIcon weatherIcon={weatherIcon} />
-      <Tempature temp={20} />
+      <Tempature temp={temp} />
     </div>
   )
 }
