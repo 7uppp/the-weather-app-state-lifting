@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { WeatherContext } from '../../context/WeatherContext'
+import { WeatherContext } from '@/context/WeatherContext'
 import CurrentCity from './components/currentCity/components/CurrentCity'
-import WeeklyForecast from './components/Forecast/WeeklyForecast'
+import WeeklyForecast from './components/CurrentCity/components/WeeklyForecast'
 import SearchBar from './components/SearchBar/SearchBar'
-import bg from '../../img/hero-pattern.jpg'
-import BackgroundImage from '../backgroundImage/BackgroundImage'
-import OtherCities from './components/OtherCities/OtherCities'
+import bg from '@/img/hero-pattern.jpg'
+import BackgroundImage from '../backgroundImage'
+import OtherCities from './components/OtherCities'
 
 const WeatherCard = () => {
   const { cityName, temp, desc, weatherIcon, humidity, wind_kph } =

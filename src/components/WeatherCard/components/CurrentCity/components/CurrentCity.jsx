@@ -1,7 +1,7 @@
-import Name from '../../../../Name'
-import Tempature from '../../../../Tempature'
+import Name from '@/components/Name'
+import Tempature from '@/components/Tempature'
 import WeatherDesc from './WeatherDesc'
-import WeatherIcon from '../../../../WeatherIcon/'
+import WeatherIcon from '@/components//WeatherIcon/'
 import Meta from './Meta'
 
 const CurrentCity = ({

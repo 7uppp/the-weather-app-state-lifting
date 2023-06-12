@@ -1,7 +1,7 @@
-import Date from '../../../../../../../../components/Date'
-import WeatherIcon from '../../../../../../../../components/WeatherIcon'
-import WeatherDesc from '../../../../../../components/CurrentCity/components/WeatherDesc'
-import Tempature from '../../../../../../../../components/Tempature'
+import Date from '@/components/Date'
+import WeatherIcon from '@/components/WeatherIcon'
+import WeatherDesc from '@/components/WeatherCard/components/CurrentCity/components/WeatherDesc'
+import Tempature from '@/components/Tempature'
 
 const WeeklyDayCard = ({ dayData }) => {
   // console.log(dayData)

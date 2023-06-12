@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { WeatherContext } from '../../../../../../src/context/WeatherContext'
-import Title from '../../../../Title/Title'
+import { WeatherContext } from '@/context/WeatherContext'
+import Title from '@/components/Title'
 import WeeklyCard from './components/WeeklyCard/WeeklyCard'
 
 const WeeklyForecast = () => {
