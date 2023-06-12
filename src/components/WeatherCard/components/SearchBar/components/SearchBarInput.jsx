@@ -1,21 +1,30 @@
-import { useContext } from 'react'
-import { WeatherContext } from '../../../../../../src/context/WeatherContext'
+import { SearchIcon } from '@chakra-ui/icons'
+import { useState } from 'react'
 
-const SearchBarInput = () => {
-  const { setProperty } = useContext(WeatherContext)
+const SearchBarInput = ({ setCity }) => {
+  const [input, setInput] = useState('')
 
   const SearchInputHandler = (e) => {
     e.preventDefault()
-    setProperty('city', e.target.value)
+    setInput(e.target.value)
+  }
+
+  const handleClick = () => {
+    setCity(input)
+    setInput('')
   }
 
   return (
-    <input
-      type="text"
-      placeholder="Search for city ..."
-      className="focus:outline-none text-black w-full"
-      onChange={SearchInputHandler}
-    />
+    <div className="flex w-full items-center">
+      <input
+        type="text"
+        placeholder="Search for city ..."
+        className="focus:outline-none text-black w-full"
+        onChange={SearchInputHandler}
+        value={input}
+      />
+      <SearchIcon onClick={handleClick} />
+    </div>
   )
 }
 
