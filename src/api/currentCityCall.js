@@ -15,13 +15,13 @@ export const getTodayWeather = async (city) => {
     const {
       location: { name: cityName },
       current: {
-        temp_c: temp,
-        condition: { text: desc, icon: weatherIcon },
+        temp_c: temperature,
+        condition: { text: description, icon: weatherIcon },
         humidity,
-        wind_kph,
+        wind_kph: windSpeed,
       },
     } = response.data
-    return { cityName, temp, desc, weatherIcon, humidity, wind_kph }
+    return { cityName, temperature, description, weatherIcon, humidity, windSpeed }
 
   } catch (error) {
     console.log(error)

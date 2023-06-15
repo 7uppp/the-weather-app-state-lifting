@@ -1,5 +1,5 @@
-const Wind = ({ wind_kph }) => {
-  return <div>wind: {Number(wind_kph).toFixed()} km/h</div>
+const Wind = ({ windSpeed }) => {
+  return <div>wind: {Number(windSpeed).toFixed()} km/h</div>
 }
 
 export default Wind
