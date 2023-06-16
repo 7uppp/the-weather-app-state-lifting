@@ -1,6 +1,8 @@
-const WeatherDesc = ({ description, className }) => {
+const WeatherDesc = ({ description, className, isLoading }) => {
   return (
-    <div className={`text-white font-normal ${className}`}>{description}</div>
+    <div className={`text-white font-normal ${className}`}>
+      {isLoading ? 'Loading' : description}
+    </div>
   )
 }
 

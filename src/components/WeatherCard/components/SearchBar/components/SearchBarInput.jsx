@@ -1,8 +1,10 @@
 import { SearchIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const SearchBarInput = ({ setCity }) => {
+const SearchBarInput = () => {
   const [input, setInput] = useState('')
+  const navigate = useNavigate()
 
   const SearchInputHandler = (e) => {
     e.preventDefault()
@@ -10,8 +12,9 @@ const SearchBarInput = ({ setCity }) => {
   }
 
   const handleClick = () => {
-    setCity(input)
-    setInput('')
+    const url = new URL(window.location.href)
+    url.searchParams.set('city', input)
+    navigate(url.pathname + url.search)
   }
 
   return (

@@ -21,13 +21,13 @@ export const getOtherCitiesWeather = async () => {
       const {
         location: { name: cityName },
         current: {
-          temp_c: temp,
+          temp_c: temperature,
           condition: { icon: weatherIcon },
         },
       } = city.data
       return {
         cityName,
-        temp,
+        temperature,
         weatherIcon,
       }
     })

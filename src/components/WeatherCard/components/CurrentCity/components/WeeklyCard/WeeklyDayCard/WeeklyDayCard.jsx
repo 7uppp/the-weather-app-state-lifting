@@ -3,7 +3,7 @@ import WeatherIcon from '@/components/WeatherIcon'
 import WeatherDesc from '@/components/WeatherCard/components/CurrentCity/components/WeatherDesc'
 import Temperature from '@/components/Temperature'
 
-const WeeklyDayCard = ({ dayWeather }) => {
+const WeeklyDayCard = ({ dayWeather, isLoading }) => {
   // console.log(dayData)
   const { date, day } = dayWeather || {}
   const { condition, avgtemp_c } = day || {}

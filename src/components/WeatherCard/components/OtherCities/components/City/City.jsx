@@ -8,7 +8,7 @@ const City = ({ cityData }) => {
     <div className="flex gap-2 items-center">
       <Name className="text-white font-normal ">{cityData?.cityName}</Name>
       <WeatherIcon weatherIcon={cityData?.weatherIcon} />
-      <Temperature temp={cityData?.temp} />
+      <Temperature temperature={cityData?.temperature} />
     </div>
   )
 }

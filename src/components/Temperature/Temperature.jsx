@@ -1,7 +1,7 @@
-const Temperature = ({ temperature, className }) => {
+const Temperature = ({ temperature, className, isLoading }) => {
   return (
     <div className={`text-white font-medium ${className}`}>
-      {Number(temperature).toFixed()}℃
+      {isLoading ? 'Loading' : `${Number(temperature).toFixed()}℃`}
     </div>
   )
 }

@@ -1,7 +1,11 @@
-const WeatherIcon = ({ weatherIcon }) => {
+const WeatherIcon = ({ weatherIcon, isLoading }) => {
   return (
     <div>
-      <img src={`https:${weatherIcon}`} alt="WeatherImage" width="100%" />
+      {isLoading ? (
+        'Loading'
+      ) : (
+        <img src={`https:${weatherIcon}`} alt="WeatherImage" width="100%" />
+      )}
     </div>
   )
 }

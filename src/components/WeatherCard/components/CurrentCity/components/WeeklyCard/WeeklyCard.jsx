@@ -3,8 +3,9 @@ import WeeklyDayCard from './WeeklyDayCard/WeeklyDayCard'
 import Title from '@/components/Title'
 import { getWeeklyWeather } from '@/api/currentCityCall'
 
-const WeeklyCard = ({ city, setLoading }) => {
+const WeeklyCard = ({ city }) => {
   const [weeklyWeather, setWeeklyWeather] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getWeeklyWeather(city)
@@ -13,7 +14,7 @@ const WeeklyCard = ({ city, setLoading }) => {
         console.log(data)
       })
       .finally(() => {
-        setLoading(false)
+        setIsLoading(false)
       })
   }, [city])
 
@@ -23,7 +24,13 @@ const WeeklyCard = ({ city, setLoading }) => {
       <div className="flex flex-col">
         {weeklyWeather.map((dayWeather, index) => {
           // console.log(dayData)
-          return <WeeklyDayCard key={index} dayWeather={dayWeather} />
+          return (
+            <WeeklyDayCard
+              key={index}
+              dayWeather={dayWeather}
+              isLoading={isLoading}
+            />
+          )
         })}
       </div>
     </div>

@@ -1,5 +1,5 @@
-const Humidity = ({ humidity }) => {
-  return <div>Humidity: {humidity}%</div>
+const Humidity = ({ humidity, isLoading }) => {
+  return <div>Humidity: {isLoading ? 'Loading' : humidity}%</div>
 }
 
 export default Humidity
